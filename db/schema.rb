@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_02_02_225533) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "clients", force: :cascade do |t|
     t.string "name"
     t.string "phone"
@@ -22,11 +25,11 @@ ActiveRecord::Schema.define(version: 2021_02_02_225533) do
 
   create_table "pet_histories", force: :cascade do |t|
     t.float "weight"
-    t.integer "heigth"
+    t.float "heigth"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "pet_id"
+    t.bigint "pet_id"
     t.date "date"
     t.index ["pet_id"], name: "index_pet_histories_on_pet_id"
   end
@@ -37,8 +40,10 @@ ActiveRecord::Schema.define(version: 2021_02_02_225533) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "client_id"
+    t.bigint "client_id"
     t.index ["client_id"], name: "index_pets_on_client_id"
   end
 
+  add_foreign_key "pet_histories", "pets"
+  add_foreign_key "pets", "clients"
 end
