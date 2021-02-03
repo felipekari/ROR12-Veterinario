@@ -1,6 +1,6 @@
-<h1>Editing Pet History</h1>
+<h1>Editing Pet History for <%= @pet.name %></h1>
 
 <%= render 'form', pet_history: @pet_history %>
 
-<%= link_to 'Show', @pet_history %> |
-<%= link_to 'Back', pet_histories_path %>
+<%= link_to 'Show', pet_pet_histories_path(@pet, @pet_history) %> |
+<%= link_to 'Back', pet_pet_histories_path(@pet) %>

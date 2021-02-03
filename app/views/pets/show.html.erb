@@ -15,7 +15,6 @@
   <%= @pet.birthdate %>
 </p>
 
-
 <table>
   <thead>
     <tr>
@@ -31,8 +30,30 @@
       <td><%= @pet.avg_weight %></td>
       <td><%= @pet.avg_height %></td>
       <td><%= @pet.max_weight %></td>
-      <td><%= @pet.max_height%></td>
+      <td><%= @pet.max_height %></td>
     </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Weight</th>
+      <th>Heigth</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pet.pet_histories.each do |pet_history| %>
+      <tr>
+        <td><%= pet_history.date %></td>
+        <td><%= pet_history.weight %></td>
+        <td><%= pet_history.heigth %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

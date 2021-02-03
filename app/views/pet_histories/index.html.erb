@@ -1,10 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pet Histories</h1>
+<h1>Pet Histories for <%= @pet.name %></h1>
 
 <table>
   <thead>
     <tr>
+      <th>Date</th>
       <th>Weight</th>
       <th>Heigth</th>
       <th>Description</th>
@@ -15,12 +16,13 @@
   <tbody>
     <% @pet_histories.each do |pet_history| %>
       <tr>
+        <td><%= pet_history.date %></td>
         <td><%= pet_history.weight %></td>
         <td><%= pet_history.heigth %></td>
         <td><%= pet_history.description %></td>
-        <td><%= link_to 'Show', pet_history %></td>
-        <td><%= link_to 'Edit', edit_pet_history_path(pet_history) %></td>
-        <td><%= link_to 'Destroy', pet_history, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', pet_pet_history_path(@pet, pet_history) %></td>
+        <td><%= link_to 'Edit', edit_pet_pet_history_path(@pet, pet_history) %></td>
+        <td><%= link_to 'Destroy', pet_pet_history_path(@pet, pet_history), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Pet History', new_pet_history_path %>
+<%= link_to 'New Pet History', new_pet_pet_history_path(@pet) %>
+<%= link_to 'Back', pets_path %>
