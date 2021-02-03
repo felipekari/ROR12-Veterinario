@@ -17,7 +17,7 @@ class Pet < ApplicationRecord
 
   def avg_weight
     if self.pet_histories.any?
-      self.pet_histories.pluck(:weight).sum / self.pet_histories.pluck(:weight).count
+      self.pet_histories.average(:weight)
     else
       "Sin informacion"
     end
@@ -25,7 +25,7 @@ class Pet < ApplicationRecord
 
   def avg_height
     if self.pet_histories.any?
-      self.pet_histories.pluck(:heigth).sum / self.pet_histories.pluck(:heigth).count
+      self.pet_histories.average(:heigth)
     else
       "Sin informacion"
     end
